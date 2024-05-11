@@ -5,7 +5,7 @@ const doc = {
         title: 'Playlists API',
         description: 'Playlists API'
     },
-    host: 'localhost:3000',
+    host: 'cse471-playlists.onrender.com',
     schemes: ['https', 'http']
 };
 
