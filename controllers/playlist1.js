@@ -2,7 +2,7 @@ const mongodb = require('../data/database');
 const ObjectId = require('mongodb').ObjectId;
 
 const getAll = (req, res) => {
-    mongodb.getDatabase().db().collection('playlist1').find()
+    mongodb.getDatabase().db().collection('playlist-1').find()
     .toArray((err, lists) => {
         if (err) {
             res.status(400).json({ message: err });
@@ -17,7 +17,7 @@ const getSingle = (req, res) => {
         res.status(400).json('Must use a valid song id to find a song.');
     }
     const songId = new ObjectId(req.params.id);
-    mongodb.getDatabase().db().collection('playlist1').find({_id: songId})
+    mongodb.getDatabase().db().collection('playlist-1').find({_id: songId})
     .toArray((err, result) => {
         if (err) {
             res.status(400).json({ message: err });
@@ -36,7 +36,7 @@ const addSong = async (req, res) => {
         releaseDate: req.body.releaseDate,
         duration: req.body.duration
     };
-    const response = await mongodb.getDatabase().db().collection('playlist1').insertOne(song);
+    const response = await mongodb.getDatabase().db().collection('playlist-1').insertOne(song);
     if (response.acknowledged) {
         res.status(204).send();
     } else {
@@ -54,7 +54,7 @@ const updateSong = async (req, res) => {
         releaseDate: req.body.releaseDate,
         duration: req.body.duration
     };
-    const response = await mongodb.getDatabase().db().collection('playlist1').replaceOne({_id: songId}, song);
+    const response = await mongodb.getDatabase().db().collection('playlist-1').replaceOne({_id: songId}, song);
     if (response.modifiedCount > 0) {
         res.status(204).send();
     } else {
@@ -67,7 +67,7 @@ const deleteSong = async (req, res) => {
         res.status(400).json('Must use a valid song id to delete a song.');
     }
     const songId = new ObjectId(req.params.id);
-    const response = await mongodb.getDatabase().db().collection('playlist1').deleteOne({_id: songId});
+    const response = await mongodb.getDatabase().db().collection('playlist-1').deleteOne({_id: songId});
     if (response.deletedCount > 0) {
         res.status(204).send();
     } else {
