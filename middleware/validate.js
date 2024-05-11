@@ -7,7 +7,7 @@ const saveSong = (req, res, next) => {
         album: 'required|string',
         genre: 'string',
         releaseDate: 'required|string',
-        duration: 'required|number'
+        duration: 'required'
     };
     validator(req.body, validationRule, {}, (err, status) => {
         if (!status) {
