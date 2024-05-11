@@ -1,0 +1,71 @@
+// LOCALHOST
+### Get playlist 1
+GET http://localhost:3000/playlist1
+
+### Get playlist 2
+GET http://localhost:3000/playlist2
+
+### Get song by id from playlist 1
+GET http://localhost:3000/playlist1/663fe30de7bd084fe090ecd1
+
+### Get song by id from playlist 2
+GET http://localhost:3000/playlist2/663fe432e7bd084fe090ecd8
+
+### Add song to playlist 1
+POST http://localhost:3000/playlist1 HTTP/1.1
+content-type: application/json
+
+{
+  "artist": "Zachary Knowles",
+  "title": "cherry wine",
+  "album": "magnolia - EP",
+  "genre": "Pop",
+  "releaseDate": "27 March 2020",
+  "duration": 3.08
+}
+
+### Add song to playlist 2
+POST http://localhost:3000/playlist2 HTTP/1.1
+content-type: application/json
+
+{
+  "artist": "Zachary Knowles",
+  "title": "cherry wine",
+  "album": "magnolia - EP",
+  "genre": "Pop",
+  "releaseDate": "27 March 2020",
+  "duration": 3.08
+}
+
+### Update song in playlist 1
+PUT http://localhost:3000/playlist1/663fe30de7bd084fe090ecd1 HTTP/1.1
+content-type: application/json
+
+{
+  "artist": "Taylor Swiftie",
+  "title": "Fortnight (feat. Post Malone)",
+  "album": "The Tortured Poets Department",
+  "genre": "Pop",
+  "releaseDate": "19 April 2024",
+  "duration": 3.49
+}
+
+### Update song in playlist 2
+PUT http://localhost:3000/playlist2/663fe432e7bd084fe090ecd8 HTTP/1.1
+content-type: application/json
+
+{
+  "artist": "Laufey",
+  "title": "Second Best",
+  "album": "Bewitched: The Goddess Edition",
+  "genre": "Jazz",
+  "releaseDate": "8 September 2023",
+  "duration": 3.25
+}
+
+### Delete song from playlist 1
+DELETE http://localhost:3000/playlist1/6633dcf6b89c944ebb860b7c HTTP/1.1
+
+
+### Delete song from playlist 2
+DELETE http://localhost:3000/playlist2/6633dcf6b89c944ebb860b7c HTTP/1.1
