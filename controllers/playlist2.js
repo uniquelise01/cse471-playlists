@@ -45,6 +45,9 @@ const addSong = async (req, res) => {
 };
 
 const updateSong = async (req, res) => {
+    if (!ObjectId.isValid(req.params.id)) {
+        res.status(400).json('Must use a valid song id to find a song.');
+    }
     const songId = new ObjectId(req.params.id);
     const song = {
         artist: req.body.artist,
