@@ -2,7 +2,11 @@ const mongodb = require('../data/database');
 const ObjectId = require('mongodb').ObjectId;
 
 const getAll = (req, res) => {
-    mongodb.getDatabase().db().collection('playlist-1').find()
+    mongodb
+    .getDatabase()
+    .db()
+    .collection('playlist-1')
+    .find()
     .toArray((err, lists) => {
         if (err) {
             res.status(400).json({ message: err });
@@ -23,7 +27,7 @@ const getSingle = (req, res) => {
             res.status(400).json({ message: err });
         }
         res.setHeader('Content-Type', 'application/json');
-        res.status(200).json(playlist1[0]);
+        res.status(200).json(result[0]);
     });
 };
 
