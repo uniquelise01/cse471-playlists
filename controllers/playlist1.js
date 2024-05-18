@@ -7,13 +7,13 @@ const getAll = (req, res) => {
     .db()
     .collection('playlist-1')
     .find()
-    .toArray().then((err, lists) => {
+    .toArray((err, lists) => {
         if (err) {
             res.status(400).json({ message: err });
         }
         res.setHeader('Content-Type', 'application/json');
         res.status(200).json(lists);
-    });
+    }).then();
 };
 
 const getSingle = (req, res) => {
