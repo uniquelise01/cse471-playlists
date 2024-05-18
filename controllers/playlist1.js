@@ -7,13 +7,14 @@ const getAll = (req, res) => {
     .db()
     .collection('playlist-1')
     .find()
-    .toArray((err, lists) => {
-        if (err) {
-            res.status(400).json({ message: err });
-        }
+    .toArray()
+    .then((lists) => {
         res.setHeader('Content-Type', 'application/json');
         res.status(200).json(lists);
-    }).then();
+    })
+    .catch((err) => {
+        res.status(400).json({ message: err });
+    });
 };
 
 const getSingle = (req, res) => {
@@ -22,12 +23,12 @@ const getSingle = (req, res) => {
     }
     const songId = new ObjectId(req.params.id);
     mongodb.getDatabase().db().collection('playlist-1').find({_id: songId})
-    .toArray().then((err, result) => {
-        if (err) {
-            res.status(400).json({ message: err });
-        }
+    .toArray().then((result) => {
         res.setHeader('Content-Type', 'application/json');
         res.status(200).json(result[0]);
+    })
+    .catch((err) => {
+        res.status(400).json({ message: err});
     });
 };
 
