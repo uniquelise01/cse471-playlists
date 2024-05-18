@@ -64,7 +64,7 @@ content-type: application/json
 }
 
 ### Delete song from playlist 1
-DELETE http://localhost:3000/playlist1/663ff4c648d6da769c2e69c8 HTTP/1.1
+DELETE http://localhost:3000/playlist1/664025a0af7b9fce4e2c7ce7 HTTP/1.1
 
 
 ### Delete song from playlist 2
